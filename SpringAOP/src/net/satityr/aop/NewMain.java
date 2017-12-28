@@ -24,12 +24,16 @@ public class NewMain {
     
     // call the business method
     
+    System.out.println("I'm gonna call setName");
     account.setName("nameTest");
     System.out.println("I called setName \n");
+    System.out.println("I'm gonna call addAccount 3 times \n");
     theAccountDao.addAccount();
     membershipDao.addAccount();
     theAccountDao.addAccount(account);
+    System.out.println("I called addAccount 3 times \n");
     
+    System.out.println("I'm gonna call getName \n");
     account.getName();
     System.out.println("I called getName \n");
     

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
+  
+  
+  /*
 
   // logging before the call of addAcount
   @Before("execution(public void net.satityr.aop.dao.AccountDao.addAccount())")
@@ -22,7 +25,7 @@ public class LoggingAspect {
   @Before("execution(public void add*())")
   public void beforePublicAdd() {
 
-    System.out.println(" : before Public Add methode : !!!!!!!");
+    System.out.println(" : before Public Add method : !!!!!!!");
 
   }
 
@@ -31,7 +34,7 @@ public class LoggingAspect {
   @Before("execution(void add*())")
   public void beforeAnyAdd() {
 
-    System.out.println(" : before Any Add methode : !!!!!!!");
+    System.out.println(" : before Any Add method : !!!!!!!");
 
   }
 
@@ -39,7 +42,7 @@ public class LoggingAspect {
   @Before("execution(boolean add*())")
   public void beforeBooleanAdd() {
 
-    System.out.println(" : before boolean Add methode : !!!!!!!");
+    System.out.println(" : before boolean Add method : !!!!!!!");
 
   }
 
@@ -47,7 +50,7 @@ public class LoggingAspect {
   @Before("execution(* add*(net.satityr.aop.dao.Account))")
   public void beforeParamAdd() {
 
-    System.out.println(" : before Add methode with Account param : !!!!!!!");
+    System.out.println(" : before Add method with Account parameter : !!!!!!!");
 
   }
 
@@ -64,7 +67,7 @@ public class LoggingAspect {
   public void beforeMultiParamAdd() {
 
     System.out.println(
-        " : before Add methode with Account param, and probably more parameters : !!!!!!!");
+        " : before Add method with Account parameter, and probably more parameters : !!!!!!!");
 
   }
   
@@ -78,7 +81,7 @@ public class LoggingAspect {
   public void beforeMemberAdd1() {
 
     System.out.println(
-        " : before Add methode of membership 1 : !!!!!!!");
+        " : before Add method of membership 1 : !!!!!!!");
 
   }
 
@@ -86,7 +89,7 @@ public class LoggingAspect {
   public void beforeMemberAdd2() {
 
     System.out.println(
-        " : before Add methode of membership 2 : !!!!!!!");
+        " : before Add method of membership 2 : !!!!!!!");
 
   }
 
@@ -94,7 +97,7 @@ public class LoggingAspect {
   public void beforeMemberAdd3() {
 
     System.out.println(
-        " : before Add methode of membership 3 : !!!!!!!");
+        " : before Add method of membership 3 : !!!!!!!");
 
   }
   
@@ -116,8 +119,8 @@ public class LoggingAspect {
   
   @After("forDaoPackageExceptGetAndSet()")
   public void anAfter() {
-    System.out.println("*******After executing a Dao methode, Except getters and setters!*******\n\n");
+    System.out.println("*******After executing a DAO method, Except getters and setters!*******\n\n");
   }
   
-  
+  */
 }
