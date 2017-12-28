@@ -1,14 +1,12 @@
 package net.satityr.aop;
 
-
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import net.satityr.aop.dao.Account;
 import net.satityr.aop.dao.AccountDao;
 import net.satityr.aop.dao.MembershipDao;
 
-public class MainApp {
+public class NewMain {
 
   public static void main(String[] args) {
 
@@ -32,6 +30,8 @@ public class MainApp {
     membershipDao.addAccount();
     theAccountDao.addAccount(account);
     
+    account.getName();
+    System.out.println("I called getName \n");
     
     // close the context
     

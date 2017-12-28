@@ -1,5 +1,6 @@
 package net.satityr.aop.aspect;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -68,7 +69,7 @@ public class LoggingAspect {
   }
   
   
-  //declaring the pointcut expression
+  //declaring the point cut expression
   @Pointcut("execution( * net.satityr.aop.dao.MembershipDao.addAccount(..))")
   public void pointcutForMembership() {}
   
@@ -96,5 +97,27 @@ public class LoggingAspect {
         " : before Add methode of membership 3 : !!!!!!!");
 
   }
-
+  
+  // point cut for package
+  @Pointcut("execution(* net.satityr.aop.dao.*.*(..))")
+  private void forDaoPackage() {}
+  
+  // point cut for getters
+  @Pointcut("execution(* net.satityr.aop.dao.*.get*())")
+  private void getter() {}
+  
+  // point cut for package
+  @Pointcut("execution(* net.satityr.aop.dao.*.set*(..))")
+  private void setter() {}
+  
+  // combine the point cuts include package exclude getters setters
+  @Pointcut("forDaoPackage() && !(getter() || setter())")
+  private void forDaoPackageExceptGetAndSet() {}
+  
+  @After("forDaoPackageExceptGetAndSet()")
+  public void anAfter() {
+    System.out.println("*******After executing a Dao methode, Except getters and setters!*******\n\n");
+  }
+  
+  
 }
