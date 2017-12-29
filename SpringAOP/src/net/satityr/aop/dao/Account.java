@@ -6,11 +6,16 @@ import org.springframework.stereotype.Component;
 public class Account {
 
   
-  public String name;
-  public String accountNumber ;
-  
+  private String name;
+  private String accountNumber ;
+
   public Account() {
-    // TODO Auto-generated constructor stub
+    
+  }
+
+  public Account(String name, String accountNumber) {
+    this.name = name;
+    this.accountNumber = accountNumber;
   }
 
   public String getName() {
@@ -29,5 +34,8 @@ public class Account {
     this.accountNumber = accountNumber;
   }
   
-  
+  @Override
+  public String toString() {
+    return "Account [name=" + name + ", accountNumber=" + accountNumber + "]";
+  }
 }

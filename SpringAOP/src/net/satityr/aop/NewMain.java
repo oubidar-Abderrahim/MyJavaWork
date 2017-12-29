@@ -22,6 +22,8 @@ public class NewMain {
     MembershipDao membershipDao = context.getBean("membershipDao",MembershipDao.class);
     Account account = context.getBean("account",Account.class);
     
+
+    
     // call the business method
     
     System.out.println("I'm gonna call setName");
@@ -30,7 +32,7 @@ public class NewMain {
     System.out.println("I'm gonna call addAccount 3 times \n");
     theAccountDao.addAccount();
     membershipDao.addAccount();
-    theAccountDao.addAccount(account);
+    System.out.println(theAccountDao.addAccount(account, true, 7));
     System.out.println("I called addAccount 3 times \n");
     
     System.out.println("I'm gonna call getName \n");

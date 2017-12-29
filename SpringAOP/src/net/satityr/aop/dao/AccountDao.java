@@ -22,9 +22,11 @@ public class AccountDao {
     System.out.println("");
   }
   
-  public void addAccount(Account account) {
+  public String addAccount(Account account, boolean b, int i) {
     
-    System.out.println(getClass() + " : Doing DB work whatever!");
+    System.out.println(getClass() + " : Doing DB work whatever! and return a string");
     System.out.println("");
+    
+    return account.getName() + " " + i ;
   }
 }
