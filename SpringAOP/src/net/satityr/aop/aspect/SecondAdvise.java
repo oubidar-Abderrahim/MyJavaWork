@@ -32,9 +32,10 @@ public class SecondAdvise {
   
   
   //logging after the call of any method inside the package net.satityr.aop.dao except getters and setters
-  @AfterReturning(pointcut="* String net.satityr.aop.dao.AccountDao.addAccount(..)", returning="result")
+  @AfterReturning(pointcut="execution( String net.satityr.aop.dao.AccountDao.addAccount(..))", returning="result")
   public void anAfterReturning(JoinPoint joinPoint, String result) {
-    System.out.println("*******After executing a Dao methode, Except getters and setters SECOND Advise: Re-Verify Once more!*******\n\n");
+    System.out.println("*******After getting the results *******\n\n");
+    System.out.println("** Result : " + result + " ***");
   }
   
   
