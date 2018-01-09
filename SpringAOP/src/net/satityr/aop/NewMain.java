@@ -32,12 +32,19 @@ public class NewMain {
     System.out.println("I'm gonna call addAccount 3 times \n");
     theAccountDao.addAccount();
     membershipDao.addAccount();
-    System.out.println(theAccountDao.addAccount(account, true, 7));
+    System.out.println("result => " + theAccountDao.addAccount(account, true, 7));
     System.out.println("I called addAccount 3 times \n");
     
     System.out.println("I'm gonna call getName \n");
     account.getName();
     System.out.println("I called getName \n");
+    
+    try {
+      membershipDao.addException(true);
+    }catch(Exception e) {
+      System.out.println("Ooops! an exeption occured!");
+    }
+    
     
     // close the context
     

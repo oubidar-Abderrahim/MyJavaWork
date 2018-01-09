@@ -36,6 +36,11 @@ public class SecondAdvise {
   public void anAfterReturning(JoinPoint joinPoint, String result) {
     System.out.println("*******After getting the results *******\n\n");
     System.out.println("** Result : " + result + " ***");
+    
+    // let's make it Upper-case we can do any modification and it will modify the output objects
+    result = result.toUpperCase();
+    System.out.println("** Result : " + result + " ***");
+    
   }
   
   

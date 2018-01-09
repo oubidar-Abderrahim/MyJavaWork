@@ -1,6 +1,8 @@
 package net.satityr.aop.aspect;
 
 
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -23,5 +25,12 @@ public class LastAdvise {
 
   }
   
+  // after throwing an exception
+  @AfterThrowing(pointcut="execution(* *.addException(boolean))", throwing="theExeption")
+  public void afterTheException(JoinPoint joinPoint, Throwable theExeption) {
+    
+    // log the exception : 
+    System.out.println("####### the Exeption :: " + theExeption + " #######");
+  }
   
 }
