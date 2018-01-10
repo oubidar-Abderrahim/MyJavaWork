@@ -1,5 +1,8 @@
 package net.satityr.aop;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import net.satityr.aop.dao.Account;
@@ -8,12 +11,26 @@ import net.satityr.aop.dao.MembershipDao;
 
 public class NewMain {
 
+  /*
+   *  because Spring use a different logger than System.out.print we have text showing after the context is closed
+   *  in order to remove this issue, we're going to make our program use one logger only to synchronize everything
+   */
+  
+  
+  
+  private static Logger springLogger = Logger.getLogger("org.springframework");
+  
+  
   public static void main(String[] args) {
-
-
+    
     // read spring configuration class
     
+    springLogger.setLevel(Level.OFF);
+    
+    
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigClass.class);
+    
+    
     
    
     // get bean from spring container
@@ -44,6 +61,8 @@ public class NewMain {
     }catch(Exception e) {
       System.out.println("Ooops! an exeption occured!");
     }
+    
+    System.out.println(membershipDao.sleepAndSnore());
     
     
     // close the context

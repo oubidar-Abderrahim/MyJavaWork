@@ -1,6 +1,8 @@
 package net.satityr.aop.aspect;
 
 
+import java.util.logging.Logger;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,14 +16,17 @@ import org.springframework.stereotype.Component;
 public class LastAdvise {
 
   
-  // Advises 
+  // create logger
+  private Logger lastLogger = Logger.getLogger(getClass().getName());
   
   
+  
+  // Advises :
   // logging before the call of any method inside the package net.satityr.aop.dao whatever it's name, return type or number of parameters are
   @Before("net.satityr.aop.aspect.PointCutExpression.forDaoPackageExceptGetAndSet()")
   public void beforeDaoMethode() {
 
-    System.out.println("*******Before a net.satityr.aop.dao Method LAST Advise : Keep it Simple & Stupid*******\n");
+    lastLogger.info("*******Before a net.satityr.aop.dao Method LAST Advise : Keep it Simple & Stupid*******\n");
 
   }
   
@@ -30,7 +35,7 @@ public class LastAdvise {
   public void afterTheException(JoinPoint joinPoint, Throwable theExeption) {
     
     // log the exception : 
-    System.out.println("####### the Exeption :: " + theExeption + " #######");
+    lastLogger.info("####### the Exeption :: " + theExeption + " #######");
   }
   
 }
