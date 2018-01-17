@@ -1,9 +1,13 @@
+package io.oubidar.vocal.main;
 
 //Imports
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -11,12 +15,13 @@ import java.io.IOException;
  */
 public class VoiceLauncher {
   public static void main(String[] args) throws IOException {
+    
     // Configuration Object
     Configuration configuration = new Configuration();
 
-    String DICTIONARY_PATH = VoiceLauncher.class.getResource("/3112.dic").toString();
+    String DICTIONARY_PATH = VoiceLauncher.class.getResource("/2457.dic").toString();
     
-    String LANGUAGE_MODEL_PATH = VoiceLauncher.class.getResource("/3112.lm").toString();
+    String LANGUAGE_MODEL_PATH = VoiceLauncher.class.getResource("/2457.lm").toString();
 
     // Set path to the acoustic model.
     configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
@@ -34,34 +39,55 @@ public class VoiceLauncher {
 
     // Create SpeechResult Object
     SpeechResult result;
+    
+    // create process to start explorer.exe
+    ProcessBuilder explorerProcess = new ProcessBuilder("explorer.exe");
+    
+    // create process to kill explorer
+    ProcessBuilder killExplorerProcess = new ProcessBuilder("taskkill", "/f", "/im", "explorer.exe");
+    
+    
 
     // Checking if recognizer has recognized the speech
     while ((result = recognize.getResult()) != null) {
      
       // Get the recognize speech
       String command = result.getHypothesis();
-      String work = null;
-      Process p;
       
       //Match recognized speech with our commands
       if(command.equalsIgnoreCase("open file manager")) {
-          System.out.println("File Manager Opened!");
-          work = "explorer.exe";
+        
+          // execute the process
+        explorerProcess.start() ;
+          
+        System.out.println("File Manager Opened!");
+
       } else if (command.equalsIgnoreCase("close file manager")) {
-          System.out.println("File Manager Closed!");
-          work = "exit explorer.exe";
+        
+        killExplorerProcess.start();
+
+        System.out.println("File Manager Closed!");
+          
+        
+        // wait a second so finish executing the taskkill
+        try {
+          TimeUnit.SECONDS.sleep(1);
+        }catch(InterruptedException e) {
+            
+        }
+
+        // restart explorer, otherwise your desktop will be gone
+        explorerProcess.start();
+          
       } else if (command.equalsIgnoreCase("open browser")) {
-          System.out.println("Browser Opened!");
-          work = "google-chrome";
+          
       } else if (command.equalsIgnoreCase("close browser")) {
-          System.out.println("Browser Closed!");
-          work = "pkill google-chrome";
+          
+      } else if (command.equalsIgnoreCase("exit program")) {
+        System.out.println("Bye!");
+        break;
       }
-      //In case command recognized is none of the above hence work might be null
-      if(work != null) {
-          //Execute the command
-          p = Runtime.getRuntime().exec(work);
-      }
+
     }
 
   }

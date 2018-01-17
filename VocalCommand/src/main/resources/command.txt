@@ -1,0 +1,5 @@
+open file manager
+close file manager
+open browser
+close browser
+exit program
