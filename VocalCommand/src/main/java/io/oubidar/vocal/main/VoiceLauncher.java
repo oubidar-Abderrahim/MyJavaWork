@@ -46,7 +46,11 @@ public class VoiceLauncher {
     // create process to kill explorer
     ProcessBuilder killExplorerProcess = new ProcessBuilder("taskkill", "/f", "/im", "explorer.exe");
     
+    // create process to kill explorer
+    ProcessBuilder firefoxProcess = new ProcessBuilder("C:\\Program Files\\Mozilla Firefox\\firefox.exe");    
     
+    // create process to kill explorer
+    ProcessBuilder killFirefoxProcess = new ProcessBuilder("taskkill", "/f", "/im", "firefox.exe"); 
 
     // Checking if recognizer has recognized the speech
     while ((result = recognize.getResult()) != null) {
@@ -81,10 +85,18 @@ public class VoiceLauncher {
           
       } else if (command.equalsIgnoreCase("open browser")) {
           
+        // open firefox, that should take a few seconds
+        firefoxProcess.start() ;
+        
+        System.out.println("FireFox Opened!");
       } else if (command.equalsIgnoreCase("close browser")) {
-          
+        
+        killFirefoxProcess.start() ;
+        
+        System.out.println("FireFox Closed!");
+        
       } else if (command.equalsIgnoreCase("exit program")) {
-        System.out.println("Bye!");
+        System.out.println("Exiting Program! Bye!");
         break;
       }
 
