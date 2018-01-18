@@ -32,6 +32,13 @@ public class MembershipDao {
     
     return "ZZZZZZZ";
   }
+
+  public String hideException(boolean b) {
+    
+    if(b) throw new RuntimeException("Major Accident again");
+    
+    return "OK";
+  }
   
   
   

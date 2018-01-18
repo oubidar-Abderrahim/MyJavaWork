@@ -56,6 +56,8 @@ public class NewMain {
     account.getName();
     System.out.println("I called getName \n");
     
+    
+    
     try {
       membershipDao.addException(true);
     }catch(Exception e) {
@@ -63,6 +65,13 @@ public class NewMain {
     }
     
     System.out.println(membershipDao.sleepAndSnore());
+    
+    // we will make the aspect handle the exception this time
+    try {
+      System.out.println(membershipDao.hideException(true));
+    }catch(Exception e) {
+      System.out.println("Ooops! an exeption occured!");
+    }
     
     
     // close the context

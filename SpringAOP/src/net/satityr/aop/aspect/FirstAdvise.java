@@ -54,7 +54,7 @@ public class FirstAdvise {
           firstLogger.info(" | Account name: " + account.getName() + "; AccountNumber: " + account.getAccountNumber());
         }
         else {
-          firstLogger.info("/n");
+          System.out.println("");
          
         }      
       }
