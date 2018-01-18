@@ -1,4 +1,4 @@
-package com.luv2code.springdemo.dao;
+package com.oubidar.springdemo.dao;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.luv2code.springdemo.entity.Customer;
-import com.luv2code.springdemo.entity.OrderBusiness;
+import com.oubidar.springdemo.entity.Customer;
+import com.oubidar.springdemo.entity.OrderBusiness;
 
 @Repository
 public class OrderBusinessDAOImpl implements OrderBusinessDAO {

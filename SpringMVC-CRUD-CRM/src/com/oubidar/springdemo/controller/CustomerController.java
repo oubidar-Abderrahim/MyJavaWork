@@ -1,4 +1,4 @@
-package com.luv2code.springdemo.controller;
+package com.oubidar.springdemo.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.luv2code.springdemo.entity.Customer;
-import com.luv2code.springdemo.entity.OrderBusiness;
-import com.luv2code.springdemo.service.CustomerService;
-import com.luv2code.springdemo.service.OrderBusinessService;
+import com.oubidar.springdemo.entity.Customer;
+import com.oubidar.springdemo.entity.OrderBusiness;
+import com.oubidar.springdemo.service.CustomerService;
+import com.oubidar.springdemo.service.OrderBusinessService;
 
 @Controller
 @RequestMapping("/customer")

@@ -1,4 +1,4 @@
-package com.luv2code.springdemo.entity;
+package com.oubidar.springdemo.entity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

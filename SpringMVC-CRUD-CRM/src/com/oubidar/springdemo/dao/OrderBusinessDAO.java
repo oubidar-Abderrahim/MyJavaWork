@@ -1,8 +1,8 @@
-package com.luv2code.springdemo.dao;
+package com.oubidar.springdemo.dao;
 
 import java.util.List;
 
-import com.luv2code.springdemo.entity.OrderBusiness;
+import com.oubidar.springdemo.entity.OrderBusiness;
 
 public interface OrderBusinessDAO {
 

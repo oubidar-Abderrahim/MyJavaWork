@@ -1,4 +1,4 @@
-package com.luv2code.testdb;
+package com.oubidar.testdb;
 
 import java.io.IOException;
 import java.io.PrintWriter;
