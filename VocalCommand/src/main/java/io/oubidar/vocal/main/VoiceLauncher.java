@@ -19,22 +19,26 @@ public class VoiceLauncher {
     // Configuration Object
     Configuration configuration = new Configuration();
 
-    String DICTIONARY_PATH = VoiceLauncher.class.getResource("/2457.dic").toString();
     
-    String LANGUAGE_MODEL_PATH = VoiceLauncher.class.getResource("/2457.lm").toString();
+    
+    
+    
 
     // Set path to the acoustic model.
     configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
+    
     // Set path to the dictionary.
+    String DICTIONARY_PATH = VoiceLauncher.class.getResource("/2457.dic").toString();
     configuration.setDictionaryPath(DICTIONARY_PATH);
+    
     // Set path to the language model.
+    String LANGUAGE_MODEL_PATH = VoiceLauncher.class.getResource("/2457.lm").toString();
     configuration.setLanguageModelPath(LANGUAGE_MODEL_PATH);
 
     // Recognizer Object, Pass the Configuration object
     LiveSpeechRecognizer recognize = new LiveSpeechRecognizer(configuration);
 
-    // Start Recognition Process (The bool parameter clears the previous cache if
-    // true)
+    // Start Recognition Process (The boolean parameter clears the previous cache if true)
     recognize.startRecognition(true);
 
     // Create SpeechResult Object
@@ -61,7 +65,7 @@ public class VoiceLauncher {
       //Match recognized speech with our commands
       if(command.equalsIgnoreCase("open file manager")) {
         
-          // execute the process
+        // execute the process
         explorerProcess.start() ;
           
         System.out.println("File Manager Opened!");
@@ -73,7 +77,7 @@ public class VoiceLauncher {
         System.out.println("File Manager Closed!");
           
         
-        // wait a second so finish executing the taskkill
+        // wait a second so finish executing the taskkill (it need's a moment to empty the cache)
         try {
           TimeUnit.SECONDS.sleep(1);
         }catch(InterruptedException e) {
