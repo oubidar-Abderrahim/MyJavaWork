@@ -1,5 +1,8 @@
 package com.oubidar.spring.security.configuration;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,6 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     
+    /*
     // add users for (in memory) authentication (( in Spring Security 5.0.2 , They deprecated this method ))
     UserBuilder users = User.withDefaultPasswordEncoder();
     
@@ -24,8 +28,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                                  .withUser(users.username("Aizen").password("test123").roles("MANAGER","EMPLOYEE"))
                                  .withUser(users.username("Zamasu").password("test123").roles("EMPLOYEE"))
                                  .withUser(users.username("Acknologia").password("test123").roles("EMPLOYEE"));
+    */
+    
+    
+    // use JDBC authentication
+    auth.jdbcAuthentication().dataSource(securityDataSource);
     
   }
+  
+  
+  @Autowired
+  private DataSource securityDataSource;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
